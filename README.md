@@ -4,6 +4,10 @@
 
 Toda requisição HTTP que você faz é armazenada em um cache, então quando você está fazendo a requisição primeiro ele vai buscar no cache, se ela já estiver lá ele traz e te mostra a versão mais recente daquela informação que você tem no cache e tenta revalidar ela em background, ou seja, vai na API e tenta buscar os novos dados daquela informação.
 
+# Mutate e Mutate Global
+
+Quando você atualiza dados pela interface, porém, caso o dado que você atualizou esteja em outro lugar, ele ainda vai estar com o cache antigo, porém o mutate te dá a possibilidade de atualizar o cache daquele dado globalmente.
+
 ## Referências
 
 - <a href="https://youtu.be/Pbs1VIwPoRA" target="_blank">Consumindo APIs no React com SWR | Code/Drops #38</a>
