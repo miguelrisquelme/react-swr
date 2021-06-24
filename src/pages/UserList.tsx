@@ -13,17 +13,20 @@ interface User {
 const UserList: React.FC = () => {
 	const { data, mutate } = useFetch<User[]>("/users");
 
-	const handleNameChange = useCallback((id: number) => {
-		api.put(`/users/${id}`, { name: "Novo nome" });
+	const handleNameChange = useCallback(
+		(id: number) => {
+			api.put(`/users/${id}`, { name: "Novo nome" });
 
-		const updatedUsers = data?.map((user) => {
-			if (user.id === id) return { ...user, name: "Bartolomeu" };
-			return user;
-		});
+			const updatedUsers = data?.map((user) => {
+				if (user.id === id) return { ...user, name: "Bartolomeu" };
+				return user;
+			});
 
-		mutate(updatedUsers, false);
-		mutateGlobal(`/users/${id}`, { id, name: "Bartolomeu" });
-	}, []);
+			mutate(updatedUsers, false);
+			mutateGlobal(`/users/${id}`, { id, name: "Bartolomeu" });
+		},
+		[data, mutate]
+	);
 
 	if (!data) return <p>Carregando...</p>;
 
